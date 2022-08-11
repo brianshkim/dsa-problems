@@ -3,6 +3,8 @@ Write a function sumPossible that takes in an amount and an array of positive nu
 
 You may assume that the target amount is non-negative
 
+time eta on structy: 60 min
+my time: 90 min
 
 my iterative version:
 const sumPossible = (amount, numbers) => {
