@@ -11,40 +11,26 @@ const minChange = (amount, coins) => {
     return 0
   }
 
- 
-
   let sum = amount;
   let min = Infinity
   let count = 0
-  
-  
- 
   for (let i =0;i<coins.length;i++){
     
      count++
-   
-    
     sum-=coins[i]
-      
-    
-    
+
     let sumholder = sum
     let countholder = count
     
     for(let j = 0;j<coins.length;j++){
-      
-      
-      
+
       count++
       sumholder -= coins[j]
       
       if(sumholder===0){
-        
-        
-        
+
         min = Math.min( min, count)
-       
-        
+
       }  
       else if(sumholder <0){
         sumholder=sum
@@ -58,12 +44,9 @@ const minChange = (amount, coins) => {
         sumholder+=coins[j]
         count--
       }
-     
-      
+
     }
-    
-    
-  
+
    if (sum-coins[i] > 0){
       i--
     }
@@ -77,14 +60,10 @@ const minChange = (amount, coins) => {
       min = Math.min(min, count)
     sum = amount
       count = 0;
-    
-      
+
     }
   }
-  
-  
+
   return min===Infinity?-1: min
-    
-  
 
 };
