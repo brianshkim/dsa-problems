@@ -16,8 +16,7 @@ const summingSquares = (n, track={}) => {
   let min = Infinity
   for (let i = 1;i<=Math.sqrt(n);i++){
   
-    let count = 1 + summingSquares(n-(i**2), track)//goes through every path of squares because of how the memory stack works
-    min = Math.min(min, count)
+    let count = 1 + summingSquares(n-(i**2), track)//goes through every path of squares creating a path of each square
   }
   
   track[n] = min
