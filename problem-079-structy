@@ -1,0 +1,26 @@
+Write a function, summingSquares, that takes a target number as an argument. The function should return the minimum number of perfect squares that sum to the target. 
+A perfect square is a number of the form (i*i) where i >= 1.
+
+For example: 1, 4, 9, 16 are perfect squares, but 8 is not perfect square.
+
+notes: hashmap makes this significantly faster//
+
+const summingSquares = (n, track={}) => {
+//recursive for loop is easiest to solve this for brute force
+  if (n===0){
+      return 0
+      }
+  if (n in track) {
+    return track[n]
+  }
+  let min = Infinity
+  for (let i = 1;i<=Math.sqrt(n);i++){
+  
+    let count = 1 + summingSquares(n-(i**2), track)//goes through every path of squares
+    min = Math.min(min, count)
+  }
+  
+  track[n] = min
+  return min
+
+};
