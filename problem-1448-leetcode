@@ -1,0 +1,29 @@
+var goodNodes = function(root, max=-Infinity) {
+    
+    
+    if (root.val>=max){
+       
+        max = root.val
+        
+        
+    }
+  
+    let count = 0
+   if(root.val>=max)count+=1
+    
+
+    console.log(count)
+    if(root.left){
+        
+     count+=goodNodes(root.left, max)
+    }
+    
+    if(root.right){
+       
+        count+=goodNodes(root.right, max)
+    }
+    
+    
+    return count
+    
+};
