@@ -1,0 +1,36 @@
+//almost exactly like alvin's code
+//better to solve it from (first) closing parenthesis instead of opening parenthesis
+
+const decompressBraces = (s) => {
+ 
+  let queue = []
+  let str = ''
+  for (char of s){
+   
+    if (!isNaN(Number(char)) ){
+      queue.push(Number(char))
+    }
+    else if(char === "}"){
+      let newstr = ""
+      
+      while (typeof queue[queue.length-1] !== "number"){
+        let popped = queue.pop()
+        console.log(popped)
+        newstr = popped + newstr
+      }
+      let number = queue.pop()
+      let newstr2 = ""
+      for (let i =0;i<number;i++){
+        
+        newstr2 += newstr
+      }
+      queue.push(newstr2)
+    }
+    else if (char !== '{'){
+      queue.push(char)
+    }
+  }
+  
+  return queue.join('')
+  
+};
