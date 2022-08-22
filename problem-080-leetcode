@@ -1,0 +1,31 @@
+var removeDuplicates = function(nums) {
+    let count = 0;
+    let arr = nums[0];
+    for (let i =0;i<nums.length;i++){
+        count++
+        
+        console.log(count)
+        
+        if (nums[i]===arr && count > 2){
+            
+            nums.splice(i, 1)
+            count--
+            i--
+          
+            
+            
+        }
+        if(nums[i+1]!==nums[i]){
+            arr=nums[i+1]
+               
+                count=0
+            
+            }
+       
+       
+        
+        
+        
+    }
+    
+};
