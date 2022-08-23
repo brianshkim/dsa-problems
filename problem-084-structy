@@ -1,0 +1,26 @@
+//figured out alvin's brute force code
+//memo checks which slices of the target string is found in the array and memoizes it
+
+const canConcat = (s, words, memo={} ) => {
+  // todo
+  
+  if (s in memo) return memo[s];
+  if (s.length === 0) return true
+  
+  for (let i =0;i<words.length;i++){
+    
+    if (s.startsWith(words[i])){
+      if (canConcat(s.slice(words[i].length), words, memo)){
+         console.log(memo)
+        memo[s] = true;
+        return true;
+      }
+      
+    }
+  }
+ 
+  
+  
+  memo[s]=false;
+  return false;
+};
