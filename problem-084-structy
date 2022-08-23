@@ -1,5 +1,5 @@
 //figured out alvin's brute force code
-//memo checks which slices of the target string is found in the array and memoizes it
+//memo checks which slices of the target string is found in the array of words and memoizes it
 
 const canConcat = (s, words, memo={} ) => {
   // todo
