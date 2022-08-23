@@ -1,5 +1,5 @@
 
-
+//edge cases not accounted for
 
 function toolchanger(tools, startIndex, target) {
     // Write your code here
