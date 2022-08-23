@@ -1,0 +1,25 @@
+function minimumMoves(arr1, arr2) {
+    // Write your code here
+  let counter = 0;
+    for(let i = 0;i<arr1.length;i++){
+        let num = arr1[i]
+        let num2 = arr2[i]
+        
+        
+        while(num > 0 || num2 > 0){
+            let remainder1 = arr1%10
+            let remainder2 = arr2%10
+            
+            num = Math.floor(num/10)
+            num2= Math.floor(num/10)
+            
+            
+            counter += Math.abs(remainder1-remainder2)
+        }
+        
+    }
+    
+    return counter
+
+
+}
