@@ -1,0 +1,27 @@
+
+
+
+function toolchanger(tools, startIndex, target) {
+    // Write your code here
+    let targetIndex = 0;
+    for(let i =0;i<tools.length;i++){
+        if (tools[i]===target) targetIndex=i
+    }
+    
+    let difference = targetIndex - startIndex
+    let left = 0;
+    let right = 0;
+    
+    if (difference > 0){
+        right = difference
+        left = startIndex + tools.length-targetIndex
+    } 
+    
+    else if(difference < 0){
+        right = Math.abs(difference)
+        left = tools.length - startIndex + targetIndex
+    }
+    
+    return right<left?right:left
+
+}
