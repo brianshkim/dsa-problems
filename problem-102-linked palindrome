@@ -1,3 +1,5 @@
+//optimize by getting rid of str and just using arrays from the start
+
 const linkedPalindrome = (head) => {
   // todo
   if (head===null)return  true
