@@ -1,0 +1,22 @@
+const linkedPalindrome = (head) => {
+  // todo
+  if (head===null)return  true
+  let str = ''
+  let newhead = head
+  str += newhead.val
+  
+  while(newhead.next){
+    
+   
+    newhead = newhead.next
+     str += newhead.val
+  }
+  
+  let strarray = str.split('')
+  if (str.length===1) return true
+  
+  
+  return strarray.join('') === strarray.reverse().join('')
+  
+  
+};
