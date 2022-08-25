@@ -1,0 +1,77 @@
+//using quicksort
+
+var longestConsecutive = function(nums) {
+    if(nums.length===0) return nums
+    let arr = quickSort(nums,0 , nums.length-1)
+    let arrset = new Set(arr)
+    
+    let arr2 = Array.from(arrset)
+    
+  
+    
+    let max = 0;
+    let count = 1;
+    console.log(arr2)
+    
+    for(let i =1;i<arr2.length;i++){
+        
+        
+        if(arr2[i] == arr2[i-1]+1 ){
+            count++
+        }
+        else{
+            max = Math.max(max, count)
+            count=0
+            count++
+        }
+        
+    }
+    return Math.max(max, count)
+    
+    
+};
+
+let swap = function(items, left, right){
+    let temp = items[left];
+        items[left] = items[right]
+        items[right] = temp
+}
+
+let partition = function(items, left, right){
+    let pivot = items[Math.floor((right+left)/2)]
+    let i = left
+    let j =right
+    while(i<=j){
+        while(items[i]<pivot){
+            i++
+        }
+        while(items[j]>pivot){
+            j--
+        }
+        if (i<=j){
+            swap(items, i ,j)
+            i++
+            j--
+        }
+        
+    }
+    
+    return i
+    
+    
+}
+
+let quickSort = function(items, left, right){
+    let index
+    if (items.length > 1){
+        index = partition(items, left, right)
+        if (left < index-1){
+        quickSort(items, left, index-1)
+         }
+        if (index<right){
+        quickSort(items, index, right)
+        }
+     }
+    
+    return items
+}
