@@ -1,0 +1,32 @@
+var rob = function(nums) {
+    if (nums.length ===1) return nums[0]
+    let firstpath = path(nums.slice(1))
+    let secondpath = path(nums.slice(0, -1))
+    
+    console.log(nums.slice(0, -1))
+    
+      
+    return Math.max(nums[0], firstpath, secondpath)
+    
+
+};
+
+var path = (arr) =>{
+    
+    
+    
+    let first = arr[0]
+    let second = 0;
+    let exclude;
+    
+    for (let i =1;i<arr.length;i++){
+        exclude = Math.max(first, second)
+        first = second + arr[i]
+        second = exclude
+        
+    }
+    
+
+    
+    return Math.max(first, second)
+}
