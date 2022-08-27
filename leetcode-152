@@ -1,0 +1,21 @@
+var maxProduct = function(nums) {
+    let min= 1;
+    let max = 1
+    let answer = -Infinity;
+    
+    
+    for (let i = 0;i<nums.length;i++){
+        max = Math.max(nums[i], max*nums[i], min*nums[i])
+        console.log(min, max)
+       min = Math.min(nums[i], max*nums[i], min*nums[i])
+        console.log(min, max)
+        
+       
+        
+       
+       answer = Math.max(answer, min, max)
+    }
+    
+    return answer
+    
+};
