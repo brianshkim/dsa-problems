@@ -1,0 +1,13 @@
+const middleValue = (head) => {
+  // todo
+  let str = ''
+  let newhead = head
+  
+  while(newhead.next){
+    str+=newhead.val
+    newhead = newhead.next
+  }
+  str+=newhead.val
+  console.log(str)
+  return str[Math.floor(str.length/2)]
+};
