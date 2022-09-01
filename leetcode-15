@@ -1,0 +1,35 @@
+//two pointers getting easier
+var threeSum = function(nums) {
+    let n = nums.length
+    let set = new Set()
+    let arr=[]
+    
+    let sorted = nums.sort((a,b) =>  a-b)
+    console.log(sorted)
+    for(let i =0;i<n-2;i++){
+        let left = i+1;
+        let right= n-1
+        while(left<right){
+            if(sorted[left]+sorted[right]==-sorted[i]){
+                if(!set.has('['+sorted[i]+','+sorted[left]+','+sorted[right] +']')){
+                    set.add('['+sorted[i]+','+sorted[left]+','+sorted[right] +']')
+                    arr.push([sorted[i],sorted[left],sorted[right]])
+                }
+                while(left<right && sorted[left] == sorted[left+1])                      {left++}
+                while(right>left && sorted[right]==sorted[right-1]){                    right--}
+                left++
+                right--
+            }
+            else if(sorted[left]+sorted[right]>-sorted[i]){
+                right--
+            }
+            else{
+                left++
+            }
+            
+        }
+    }
+    console.log(set)
+    return arr
+    
+};
