@@ -1,0 +1,23 @@
+//figure out alvin's solution
+//will come back and figure out my own
+
+const positioningPlants = (costs, pos=0, startingplant=null, memo={}) => {
+  const key = pos + ',' +startingplant
+  if(memo[key]) return memo[key]
+  if (pos === costs.length) return 0
+  let min = Infinity
+  for(let i =0;i<costs[pos].length;i++){
+    if (i!==startingplant){
+      const path =costs[pos][i]+positioningPlants(costs, pos+1,i, memo)
+      min = Math.min(min, path)
+    }
+  }
+    
+    
+    
+  
+memo[key]=min;
+return min;
+  
+  
+};
