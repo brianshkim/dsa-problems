@@ -1,0 +1,63 @@
+brute-force://fails
+var numsSameConsecDiff = function(n, k) {
+    let arr = []
+    let start = 10**(n-1)
+    for (let i =start;i<start*10;i++){
+       
+        let whole = Math.floor(i/10)
+         
+        let digit = i%10;
+        
+        let isdiff = true
+        
+        while(whole > 0){
+            
+            let nextdigit = whole%10
+            if(Math.abs(nextdigit-digit) !==k) {
+                isdiff=false
+                break
+            }
+                
+            digit=nextdigit
+            whole=Math.floor(whole/10)
+            
+        }
+        if (isdiff) arr.push(i)
+    }
+    return arr
+    
+};
+    
+//using BFS:
+var numsSameConsecDiff = function(n, k) {
+    let queue = [1,2,3,4,5,6,7,8,9]
+    
+    
+    for (let i = 1;i<n;i++){
+        let arr = []
+        for(let i =0;i<queue.length;i++){
+            let digit = queue[i]%10
+            let newDigits = new Set()
+            
+            newDigits.add(digit+k)
+            if(k != 0) newDigits.add(digit-k)
+            newDigits.forEach(el=> {
+                if(0<=el &&  el < 10){
+                    let nextnumber = queue[i] * 10 + el
+                    arr.push(nextnumber)
+                }
+            })
+            console.log(newDigits)
+            
+            
+            
+            
+        }
+        queue=arr
+        
+        
+        
+    }
+    
+    return queue
+};
