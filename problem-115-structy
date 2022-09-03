@@ -1,0 +1,24 @@
+const combineIntervals = (intervals) => {
+  // todo
+  let sorted = intervals.sort((a,b)=>a[0]-b[0])
+  let newarr = [sorted[0]]
+  for(let i = 1; i<sorted.length;i++){
+    let last = newarr[newarr.length-1]
+    let [start, end] = last
+    let [currentStart, currentEnd] = sorted[i]
+    if(currentStart > start && currentStart < end){
+      if(currentEnd>end) newarr[newarr.length-1] = [start, currentEnd]
+      else {
+        newarr[newarr.length-1] = [start, end]
+      }
+    }
+    else if(end==currentStart) newarr[newarr.length-1] = [start, currentEnd]
+    else{
+      newarr.push(sorted[i])
+    }
+    
+    
+  }
+  return newarr
+  
+};
