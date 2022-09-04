@@ -1,0 +1,30 @@
+const isBinarySearchTree = (root, arr=[]) => {
+  // todo
+  if (root===null)return 
+  if(root.left && root.left.val>root.val){
+    return false
+  }
+  if(root.right && root.right.val<root.val){
+    return false
+  }
+
+  if(root.left){       
+    
+    isBinarySearchTree(root.left, arr)
+    
+    }
+  arr.push(root.val)
+
+  if(root.right){
+    
+    isBinarySearchTree(root.right, arr)
+  
+  }
+  for(let i = 0;i<arr.length;i++){
+    if(arr[i]>arr[i+1]){
+      return false
+    }
+  }
+  return true
+
+};
