@@ -1,0 +1,25 @@
+//classic two pointer problem
+
+const tokenReplace = (s, tokens) => {
+  let result = "";
+  
+  let i = 0;
+  let j = 1;
+  while(i<s.length){
+    if(s[i]!=="$"){
+      result += s[i]
+      i++
+      j++
+    }
+    else if (s[j]!=="$"){
+      j++
+    }
+    else{
+      let word = s.slice(i, j+1)
+      result+=tokens[word]
+      i=j+1
+      j=i+1
+    }
+  }
+  return result
+};
