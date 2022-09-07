@@ -1,0 +1,55 @@
+const stringSearch = (grid, s) => {
+  // todo
+  let visited = new Set()
+  let row = 0
+  let col = 0
+  visited.add(0+','+0)
+  
+  
+  
+  let deltas = [[1,0],[0,1],[-1,0],[0,-1]]
+  let queue = []
+  
+  for(let i = 0;i<grid.length;i++){
+    for(let j = 0;j<grid[i].length;j++){
+      if(grid[i][j]===s[0]){
+        queue.push([i,j])
+      }
+    }
+  }
+   
+  let deltaqueue = [queue.shift()]
+  let str = s
+  while(deltaqueue.length>0){
+    
+   
+    let shifted = deltaqueue.shift()
+   
+    let [row, col] = shifted
+    console.log(shifted)
+    if(str.length===0) return true
+    if(deltaqueue.length === 0 && grid[row]!==undefined && grid[row][col]!==undefined && grid[row][col]!==str[0]){
+      str = s
+      let newshifted = queue.shift()
+      
+      if(newshifted!==undefined) deltaqueue.push(newshifted)
+    }
+    
+    else if(grid[row]!==undefined && grid[row][col]!==undefined && grid[row][col] === str[0]){
+    for(delta of deltas){
+      let [drow, dcol] = delta
+      
+      deltaqueue.unshift([row+drow, dcol+col])
+      
+    }
+      str=str.slice(1)
+    }
+  
+  
+    
+  }
+ 
+  
+  return false
+   
+};
