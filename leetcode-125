@@ -1,0 +1,18 @@
+var isPalindrome = function(s) {
+    let str=""
+    let abc = "abcdefghijklmnopqrstuvwxyz1234567890"
+    for(let i = 0;i<s.length;i++){
+        if(abc.includes(s[i].toLowerCase())){
+           str+=s[i].toLowerCase() 
+        }
+    }
+    
+  
+    for(let i = 0;i<=str.length/2;i++){
+        if(str[i]!==str[str.length-(i+1)]){
+            return false
+        }
+        
+    }
+    return true
+};
