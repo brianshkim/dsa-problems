@@ -1,0 +1,35 @@
+const subsets = (elements) => {
+  // todo
+  if (elements.length===0) return [[]]
+ let first = elements[0]
+ console.log(first)
+ let arr = []
+ let inners = subsets(elements.slice(1))
+  for(inner of inners){
+    arr.push([first, ...inner]  )
+    
+  }
+  console.log(first, arr)
+  
+  return [...arr, ...subsets(elements.slice(1))]
+  
+};
+
+
+
+//second solution
+var subsets = function(nums) {
+    let newarr = [[]];
+    for (let i =0;i<nums.length;i++){
+        const num = nums[i];
+        const arr = [];
+        for (let j = 0;j<newarr.length;j++){
+            console.log(newarr)
+            const arr2 = [...newarr[j], num]
+        
+            arr.push(arr2)
+        }
+        newarr = newarr.concat(arr)
+    }
+    return newarr
+};
