@@ -1,0 +1,14 @@
+var canReach = function(arr, start, newset={}) {
+    
+   if(arr[start]===0)return true
+    if(start > arr.length-1 || start<0) return false
+    if(newset[start]) return false
+    
+    newset[start]=1
+    
+    let add = canReach(arr, start+arr[start], newset)   
+    let subtract = canReach(arr, start-arr[start], newset)
+   
+
+    return add||subtract
+};
