@@ -1,0 +1,51 @@
+var searchRange = function(nums, target) {
+    
+    if(nums.length===1 && nums[0]===target) return [0, 0]
+    let i = 0
+    let j = nums.length-1
+    
+    let arr = []
+    while(i<=j ){
+        
+        if(nums[i]===target){
+            j=i+1
+            arr.push(i)
+            while(nums[j]===target){
+                arr.push(j)
+                j++
+            }
+        }
+       if(nums[j]===target){
+            i=j-1
+            arr.push(j)
+            while(nums[i]===target){
+                arr.push(i)
+                i--
+            }
+            
+        }
+        
+        if(arr.length>0) break
+        
+        else{
+            
+            i++
+            j--
+        }
+        
+        
+     
+        
+
+       
+    }
+    arr.sort((a,b)=>{
+        
+        return a-b
+    })
+    
+    if(arr.length===0)return [-1,-1]
+    if(arr.length==1) return [arr[0], arr[0]]
+    if(arr.length>2) return [arr[0], arr[arr.length-1]]
+    return arr
+};
