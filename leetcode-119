@@ -1,0 +1,22 @@
+var getRow = function(rowIndex) {
+    if (rowIndex === 0)return [1];
+    
+    let arr = [[1]]
+    let prev = 0
+  for(let i = 1;i<=rowIndex;i++){
+      let prev = arr[i-1]
+      let newarr = []
+      newarr.push(1)
+      for(let j = 1;j<prev.length;j++){
+          newarr[j] = prev[j-1]+prev[j]
+          
+      }
+      
+      newarr.push(1)
+      arr.push(newarr)
+      
+  }
+    
+    return arr[rowIndex]
+         
+};
