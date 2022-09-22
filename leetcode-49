@@ -1,6 +1,6 @@
 var groupAnagrams = function(strs) {
     let obj = {}
-    let arr = []
+    
     
     for(let i = 0;i<strs.length;i++){
         let str = strs[i].split('').sort().join('')
@@ -16,13 +16,5 @@ var groupAnagrams = function(strs) {
         
     }
     
-    let objvalues = Object.values(obj)
-    
-    for(let i = 0;i<objvalues.length;i++){
-        arr.push(objvalues[i])
-        
-        
-    }
-    
-    return arr
+   return Object.values(obj)
 };
