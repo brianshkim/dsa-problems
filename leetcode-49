@@ -1,0 +1,28 @@
+var groupAnagrams = function(strs) {
+    let obj = {}
+    let arr = []
+    
+    for(let i = 0;i<strs.length;i++){
+        let str = strs[i].split('').sort().join('')
+        if(obj[str]===undefined){
+            
+            obj[str]=[]
+            obj[str].push(strs[i])
+        }
+        else{
+            obj[str].push(strs[i])
+        }
+        
+        
+    }
+    
+    let objvalues = Object.values(obj)
+    
+    for(let i = 0;i<objvalues.length;i++){
+        arr.push(objvalues[i])
+        
+        
+    }
+    
+    return arr
+};
