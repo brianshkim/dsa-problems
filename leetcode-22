@@ -1,0 +1,15 @@
+var generateParenthesis = function(n, str="", open=0, arr=[]) {
+    let length = str.length
+    
+    if(open<0 || length > (2*n)) return;
+    if(open == 0 && length == (2*n)) {
+        arr.push(str)
+    }
+    
+    if(open < n) generateParenthesis(n, str + '(', open+1, arr)
+    generateParenthesis(n, str + ')', open-1, arr)
+    
+    return arr
+    
+    
+};
