@@ -1,0 +1,23 @@
+var merge = function(intervals) {
+    
+    let sorted = intervals.sort((a,b)=>{
+        return a[0]-b[0]
+    })
+    let arr = [sorted[0]]
+    for(let i = 1;i<intervals.length;i++){
+        let [start, end] = intervals[i]
+        let [prevStart, prevEnd] = arr[arr.length-1]
+        
+        if(start<=prevEnd){
+            if(end > prevEnd){
+                arr[arr.length-1][1] = end
+            }
+            
+        }
+        else{
+            arr.push(sorted[i])
+        }
+    }
+    
+    return arr
+};
