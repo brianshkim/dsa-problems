@@ -1,0 +1,41 @@
+var generateMatrix = function(n) {
+    let arr = []
+    for (let i = 0;i<n;i++){
+        arr.push([])
+        
+    }
+    let colstart = 0;
+    let colend = n-1
+    let rowstart = 0;
+    let rowend = n-1
+    let inc = 1
+    
+   while(colstart <= colend && rowstart <=rowend){
+       for(let i = colstart; i<=colend;i++){
+           arr[rowstart][i] = inc++
+           
+       }
+       for(let j = rowstart+1; j<=rowend;j++){
+           arr[j][colend] = inc++
+           
+       }
+       
+       for(let k = colend-1;k>=colstart;k--){
+           
+           arr[rowend][k] = inc++
+       }
+       
+       
+       for(let l = rowend-1; l> rowstart;l--){
+           arr[l][colstart]=inc++
+       }
+       
+       
+       colstart++
+       colend--
+       rowstart++
+       rowend--
+   }
+    
+    return arr
+};
