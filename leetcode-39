@@ -13,7 +13,6 @@ var combinationSum = function(candidates, target, result=[], combinations=[], st
         
         combinations.push(candidates[i])
         combinationSum(candidates, target-candidates[i], result, combinations, i)
-        console.log(start, candidates[i])
         combinations.pop(candidates[i])
         
         
