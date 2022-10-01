@@ -1,0 +1,12 @@
+var isValidBST = function(root, min=-Infinity, max=Infinity) {
+    
+    
+   if(root.val <= min || root.val >= max) return false
+ 
+    let left = true
+    let right = true
+   if(root.left)left = isValidBST(root.left, min, Math.min(max, root.val) )
+   if(root.right)right = isValidBST(root.right, Math.max(min, root.val), max)
+    
+    return left&&right
+};
