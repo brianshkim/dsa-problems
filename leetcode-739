@@ -1,0 +1,24 @@
+var dailyTemperatures = function(temperatures) {
+    let stack = []
+    let arr = new Array(temperatures.length).fill(0)
+    let i = 0
+    for(let i = 0;i<temperatures.length;i++){
+        let current = temperatures[i]
+        
+        
+        
+        while(stack.length>0 && temperatures[stack[stack.length-1]]<current ){
+            
+            let popped = stack.pop()
+            arr[popped]= i-popped
+            
+        }
+        
+    
+        
+        stack.push(i)
+    }
+    
+ 
+    return arr
+};
