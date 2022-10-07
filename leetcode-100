@@ -1,0 +1,11 @@
+var isSameTree = function(p, q) {
+    if(q && p==null || p&&q==null) return false
+    if(!q && !p) return true
+    if(p.val !== q.val ) return false
+    let left = true, right=true
+    if(p.left || q.left) left = isSameTree(p.left, q.left)
+    if(p.right || q.right) right = isSameTree(p.right, q.right)
+    
+    
+    return left && right
+};
