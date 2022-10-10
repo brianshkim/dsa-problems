@@ -1,0 +1,18 @@
+var sortedArrayToBST = function(nums, left=0, right=nums.length-1) {
+    
+    if (left > right) return null
+    
+    
+    let mid = Math.floor((left+right)/2)
+    
+    let newNode = new TreeNode(nums[mid])
+    
+    newNode.left = sortedArrayToBST(nums, left, mid-1)
+    newNode.right = sortedArrayToBST(nums, mid+1, right)
+    
+    
+    return newNode
+    
+   
+    
+};
