@@ -1,0 +1,21 @@
+var detectCycle = function(head) {
+    
+    let first = head
+    let second = head
+    let newhead = head
+    while(second && second.next){
+        first = first.next
+        second = second.next.next
+        if(first === second){
+            while(first !== newhead){
+                first = first.next
+                newhead = newhead.next
+            }
+            return newhead
+        }
+        
+         
+    }
+   return null
+    
+};
