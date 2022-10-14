@@ -5,15 +5,19 @@ var maxProduct = function(nums) {
     
     
     for (let i = 0;i<nums.length;i++){
-        max = Math.max(nums[i], max*nums[i], min*nums[i])
-        console.log(min, max)
-       min = Math.min(nums[i], max*nums[i], min*nums[i])
-        console.log(min, max)
-        
        
         
-       
-       answer = Math.max(answer, min, max)
+        if(nums[i]<0) {
+            
+           let temp = max
+            max =min
+            min = temp
+        }
+        
+        max = Math.max(nums[i], max*nums[i])
+        min = Math.min( nums[i], min*nums[i])
+        
+      answer = Math.max(answer, min, max)
     }
     
     return answer
