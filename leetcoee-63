@@ -1,0 +1,22 @@
+var uniquePathsWithObstacles = function(obstacleGrid) {
+    
+    let memo =  {}
+    
+    return Path(obstacleGrid, 0 ,0, memo)
+};
+
+var Path = function(grid, x, y, memo){
+    let node = x + "," + y
+    if(node in memo)return memo[node]
+    
+    if(x < 0 || y < 0 || x > grid.length-1 || y > grid[0].length-1  ) return 0
+    if (grid[x][y] === 1) return 0
+    if(x===grid.length-1 && y === grid[0].length-1) return 1
+   
+   
+   memo[node] =Path(grid, x,y+1, memo) +  Path(grid, x+1, y, memo)
+    
+    return memo[node]
+    
+    
+}
