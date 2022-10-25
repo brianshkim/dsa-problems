@@ -1,0 +1,19 @@
+var swapPairs = function(head) {
+    let dummyhead = new ListNode(0)
+    dummyhead.next = head
+    let newhead = dummyhead
+     
+
+    while(newhead.next && newhead.next.next){
+        let first = newhead.next
+        let second = newhead.next.next
+        newhead.next = second
+        first.next  = second.next
+        second.next = first
+        newhead = newhead.next.next
+        
+    }
+    
+    
+    return dummyhead.next
+};
