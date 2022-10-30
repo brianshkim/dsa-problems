@@ -1,0 +1,16 @@
+var levelOrder = function(root, arr=[], level=0) {
+    if (root===null)return []
+    if(arr.length === level){
+       arr.push([])
+   }
+    arr[level].push(root.val)
+    levelOrder(root.left, arr, level+1)
+    levelOrder(root.right, arr, level+1)
+    
+    
+    return arr
+
+
+
+
+};
