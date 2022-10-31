@@ -1,0 +1,45 @@
+var reverseWords = function(s) {
+    
+    
+    while(s[0]===" "){
+        s=s.slice(1)
+    }
+    
+    
+    while(s[s.length-1]===" "){
+    s=s.slice(0, s.length-1)
+    }
+    
+    let newstr = ""
+    for(let i = s.length-1;i>=0;i--){
+        
+        if(newstr[newstr.length-1]===" " && s[i]===" ")continue
+        else if (s[i]===" ") newstr += " "
+        else{
+            let j = i
+            let newword = ""
+            
+            while(s[j]!== " " && j >= 0){
+                newword+=s[j]
+                j--
+            }
+            
+            
+            let word = ""
+            for(let k = newword.length-1 ; k>=0;k--){
+                word+=newword[k]
+            }
+            
+            newstr += word + " "
+            
+            i=j++
+            
+        }
+       
+        
+    }
+     while(newstr[newstr.length-1]===" "){
+    newstr=newstr.slice(0, newstr.length-1)
+    }
+    return newstr
+};
