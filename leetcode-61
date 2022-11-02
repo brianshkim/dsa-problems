@@ -1,0 +1,24 @@
+var rotateRight = function(head, k) {
+    let length = 1
+    let newhead = head
+   if(head===null) return head
+    while(newhead.next !==null){
+        length++
+        newhead=newhead.next
+            
+    }
+  
+    
+    let loop = head;
+    for(let i = 1;i<length-k%length;i++){
+        loop=loop.next        
+    }
+ 
+    newhead.next = head;
+    
+    head = loop.next
+    
+    loop.next = null
+  
+    return head
+};
