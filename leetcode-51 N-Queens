@@ -1,0 +1,41 @@
+var solveNQueens = function(n) {
+    var arr = new Array(n).fill(".".repeat(n))
+    let result = []
+    placeQueens(0, result, arr, n)
+    return result
+};
+var checkValid = (grid, row, col, n)=>{
+    for(let i= 0; i<col;i++){
+        if(grid[row][i]==="Q") return false
+    }
+    for(let i=row, j=col;i>=0 && j>=0;i--, j--){
+        if(grid[i][j] === "Q") return false
+    }
+    for(let i=row, j=col;i<n&& j>=0;i++,j--){
+        if(grid[i][j] === "Q") return false
+    }
+    return true
+    
+}
+
+var placeQueens=(col, result, board, n) =>{
+    
+    if(col===n){
+        result.push(board.slice());
+        return
+    }
+    for(let row =0;row<n;row++){
+        if(checkValid(board, row, col, n)){
+          
+            let str = board[row]
+            let strarr = str.split("")
+            strarr[col]="Q"
+        
+            board[row]=strarr.join("")
+           
+            placeQueens(col+1, result, board, n)
+            board[row]=".".repeat(n);
+        }
+    }
+    
+}
