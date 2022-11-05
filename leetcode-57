@@ -1,0 +1,30 @@
+var insert = function(intervals, newInterval) {
+    let arr = []
+    
+    for(let i = 0;i<intervals.length;i++){
+        
+    
+       
+        let [first, last] = intervals[i]
+       
+        if (newInterval == null || last < newInterval[0]) {
+            arr.push(intervals[i])
+           
+        }
+        else if(first > newInterval[1]){
+          
+            arr.push(newInterval)
+            arr.push(intervals[i])
+            newInterval=null
+           
+        }
+        
+        else {
+            newInterval[0] = Math.min(newInterval[0], first);
+            newInterval[1] = Math.max(newInterval[1], last)
+        }
+      
+    }
+    if(newInterval!=null)arr.push(newInterval)
+    return arr
+};
