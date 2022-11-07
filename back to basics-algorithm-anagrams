@@ -1,4 +1,5 @@
 //recursive
+//takes too long when strings are long
 
 const anagrams = (s1, s2) => {
   if(s1.length ===0 && s2.length===0)return true
@@ -16,3 +17,7 @@ const anagrams = (s1, s2) => {
   return false
   
 };
+
+
+//can use sort-another way of thinking about this
+//can use hashmap-original way
