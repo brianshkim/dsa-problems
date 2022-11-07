@@ -1,0 +1,18 @@
+//recursive
+
+const anagrams = (s1, s2) => {
+  if(s1.length ===0 && s2.length===0)return true
+  
+  
+  if(s1.includes(s2[0])){
+    let index = s1.indexOf(s2[0])
+    let s1array = s1.split('')
+    s1array.splice(index,1)
+    let news1 = s1array.join('')
+   
+  
+    return anagrams(news1, s2.slice(1))
+  } 
+  return false
+  
+};
