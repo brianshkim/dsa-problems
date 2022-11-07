@@ -1,5 +1,6 @@
 //recursive
 //takes too long when strings are long
+//passes on structy but not on leetcode
 
 const anagrams = (s1, s2) => {
   if(s1.length ===0 && s2.length===0)return true
