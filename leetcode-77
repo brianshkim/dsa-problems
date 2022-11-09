@@ -1,0 +1,23 @@
+ 
+var combine = function(n, k, start=1,  arr=[], results=[]) {
+
+if (arr.length === k ){ 
+    results.push(arr.slice())
+    return results
+};
+if (start > n) return [[]]
+
+
+
+for(let i = start;i<=n;i++){
+  
+    arr.push(i)
+    
+    combine(n, k, i+1, arr, results)
+    arr.pop(i)
+    
+}
+    
+    return results
+  
+};
