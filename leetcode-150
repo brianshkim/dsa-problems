@@ -1,0 +1,43 @@
+var evalRPN = function(tokens) {
+    
+    let stack= []
+    let x, y
+    for(let i = 0;i<tokens.length;i++){
+      
+        if(!isNaN(tokens[i])) {
+             
+            
+            stack.push(Number(tokens[i]))
+            
+        }
+        
+        else if (isNaN(tokens[i])){
+            if(tokens[i]==="+"){
+               stack.push(Number(stack.pop())+Number(stack.pop()))
+               }
+            else if(tokens[i]==="*"){
+                stack.push(stack.pop()*stack.pop())
+                console.log(stack)
+            }
+            else if(tokens[i]==="/"){
+                x = stack.pop()
+                y = stack.pop()
+                let div = y/x
+                
+                
+                stack.push(~~div)
+                
+            }
+            else if(tokens[i]==="-"){
+                x = Number(stack.pop())
+                y = Number(stack.pop())
+                stack.push(y-x)
+            }
+            
+            
+        }
+            
+    }
+    return stack[0]
+   
+};
