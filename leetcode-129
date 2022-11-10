@@ -1,5 +1,5 @@
 var sumNumbers = function(root, i=0) {
-    if(root === null) return ""
+    if(root === null) return 0
     if(root.right === null && root.left === null) return i*10 + root.val
 
     return sumNumbers(root.left, i*10+root.val) + sumNumbers(root.right, i*10+root.val)
