@@ -1,0 +1,22 @@
+var pathSum = function(root, targetSum, arr=[], result=[]) {
+    if(!root) return []
+    
+    if(!root.left && !root.right &&targetSum-root.val ===0){
+        //arr.push doesnt work here
+        result.push([...arr.slice(),root.val])
+       
+    }
+    
+  
+    arr.push(root.val)
+    pathSum(root.left, targetSum-root.val, arr, result)
+
+ 
+     
+    pathSum(root.right, targetSum-root.val, arr, result)
+     arr.pop()
+    
+    
+    
+    return result
+};
