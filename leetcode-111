@@ -1,0 +1,10 @@
+var minDepth = function(root) {
+    if(root===null) return 0
+    if (!root.left && !root.right) return 1
+    
+    
+    let left = 1 + minDepth(root.left)
+    let right = 1 + minDepth(root.right)
+    if(left ===1|| right===1) return left+right-1
+    return Math.min(left,right)
+};
