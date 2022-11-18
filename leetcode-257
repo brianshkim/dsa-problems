@@ -1,0 +1,16 @@
+var binaryTreePaths = function(root, s="", arr=[]) {
+  
+    if(root === null) return []
+    if(!root.left && !root.right) {
+        s+=root.val
+        arr.push(s)}
+    
+    
+    s+=root.val+"->"
+    let left = binaryTreePaths(root.left,s,arr)
+    let right = binaryTreePaths(root.right,s,arr)
+    
+    
+    return arr
+    
+};
