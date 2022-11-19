@@ -1,0 +1,19 @@
+var isHappy = function(n) {
+ 
+    
+    let hashmap = new Set()
+    while (n !== 1 && !hashmap.has(n)){
+        hashmap.add(n)
+        let numstr = n.toString().split('')
+        
+        let m = 0;
+        for (let i = 0;i<numstr.length;i++){
+            m+=Math.pow(Number(numstr[i]),2)
+        }
+        
+        n = m      
+        
+    }
+    
+    return n===1
+};
