@@ -1,0 +1,13 @@
+def move_zeros(lst):
+    n = len(lst)
+    count = 0
+    for i in range(n):
+        print(count)
+        if lst[i]!=0:
+            lst[count]=lst[i]
+            count+=1
+    while count < n:
+        lst[count] = 0
+        count+=1
+
+    return lst
