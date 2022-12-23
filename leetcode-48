@@ -1,0 +1,20 @@
+var permuteUnique = function(nums, arr=[], result=[],seen=new Set(), duplicate=new Set()) {
+    
+    if(arr.length === nums.length){
+        result.push(arr.slice())
+    } 
+
+
+    for(let i = 0;i<nums.length;i++){
+        if(seen.has(i) || duplicate.has(nums[i])) continue
+        arr.push(nums[i])
+        seen.add(i)
+        duplicate.add(nums[i])
+        permuteUnique(nums, arr, result, seen)
+        arr.pop()
+        seen.delete(i)
+        
+    }
+
+    return result
+};
