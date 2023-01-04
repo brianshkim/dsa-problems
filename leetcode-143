@@ -1,0 +1,24 @@
+var reorderList = function(head) {
+      let length = 0
+      let next = head
+      let stack = []
+      while(next){
+          length++
+          stack.push(next)
+          next=next.next
+          
+      }
+      next = head
+
+      for(let i = 0;i<Math.floor(length/2);i++){
+          let temp = next.next
+          let end = stack.pop()
+          next.next = end
+          end.next = temp
+          next=temp
+
+      }
+      next.next=null
+
+    
+};
