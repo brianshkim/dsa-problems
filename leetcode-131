@@ -1,0 +1,23 @@
+var partition = function(s , ans = [], result = []) {
+   
+    if(!s.length) {
+        result.push(ans.slice())
+        return
+    }
+    
+    for(let i = 1;i<=s.length;i++){
+        let str = s.slice(0,i)
+        if(reverse(str)){
+           
+            partition(s.slice(i), [...ans, str], result)
+        }
+    }
+
+    return result
+};
+
+const reverse = (str) => {
+    let str2 = str.split('').reverse().join("")
+    
+    return str === str2
+}
