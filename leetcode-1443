@@ -1,0 +1,39 @@
+var minTime = function(n, edges, hasApple) {
+    if(edges.length === 0) return 0
+    let graph = build(edges)
+
+    return dfs(0, graph, hasApple, {})
+};
+
+function build(edges) {
+    let graph = {}
+    for(let edge of edges){
+        let [first, second] = edge
+
+        if (!(first in graph)) graph[first] = []
+        if (!(second in graph)) graph[second] = []
+        graph[first].push(second)
+        graph[second].push(first)
+
+        
+    }
+
+    return graph
+}
+
+function dfs (node, graph, hasApple,visited) {
+   if(visited[node]) return 0
+    
+    
+    visited[node] = true
+
+
+    let count = 0
+    for(let neighbor of graph[node]){
+        
+        count +=  dfs(neighbor,graph,hasApple,visited)
+    }
+    if (node === 0) return count 
+    return count > 0 || hasApple[node] ? count+2:0
+
+}
