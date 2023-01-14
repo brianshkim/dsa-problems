@@ -1,0 +1,19 @@
+var minMaxGame = function(nums) {
+
+    let i = 0
+    while(nums.length > 1){
+       let first =  nums.shift()
+       let second = nums.shift()
+
+       if (i % 2 ===0){
+       nums.push(Math.min(first,second))
+       }
+       else if(i%2===1){
+           nums.push(Math.max(first,second))
+       }
+       i++
+      
+    }
+
+    return nums
+};
