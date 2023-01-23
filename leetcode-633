@@ -1,0 +1,13 @@
+var judgeSquareSum = function(c) {
+    if (c===0) return true
+    
+
+    for(let i = 0;i<Math.sqrt(c);i++){
+        let d = c - (i*i)
+        if (Number.isInteger(Math.sqrt(d))){
+            return true
+        }
+    }
+
+    return false
+};
