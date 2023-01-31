@@ -1,0 +1,35 @@
+var numIslands = function(grid) {
+    let visited = new Set()
+    let count = 0
+    
+    for(let i = 0;i<grid.length;i++){
+        for(let j = 0;j<grid[0].length;j++){
+            if(!visited.has(i +","+j)){
+                
+                if(grid[i][j]==="1"){
+                    dfs(grid, i, j, visited)
+                    count++
+                }
+            }
+        }
+    }
+
+    return count
+};
+
+function dfs(grid, row, col, visited){
+
+    if(visited.has(row+","+col)) return
+    if(row > grid.length-1 || row < 0 || col > grid[0].length-1 || col < 0) return
+    if(grid[row][col]==="0") return
+    
+    if(grid[row][col] === "1") visited.add(row+","+col)
+
+    dfs(grid, row+1, col, visited)
+    dfs(grid, row-1, col, visited)
+    dfs(grid, row, col+1, visited)
+    dfs(grid, row, col-1, visited)
+
+    return
+
+}
