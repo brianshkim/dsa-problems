@@ -1,0 +1,12 @@
+var kthSmallest = function(root, k, count, ans=null) {
+    
+    if(!root) return ans
+    let counter = 1
+    kthSmallest(root.left,k,counter,ans)
+    counter++
+    if(counter===k) ans=root.val
+    kthSmallest(root.right,k,counter,ans)
+    count++
+    console.log(ans)
+    return ans
+};
