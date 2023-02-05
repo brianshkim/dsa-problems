@@ -9,3 +9,18 @@ var maxProfit = function(prices) {
     }
     return profit
 };
+
+
+//sliding window
+var maxProfit = function(prices) {
+    let [left, right, max] = [0,1,0]
+
+    while(right<prices.length){
+        let slide = prices[right] <= prices[left]
+        if(slide) left = right
+        let window = prices[right] - prices[left]
+        max = Math.max(max,window)
+        right++
+        }
+    return max
+};
