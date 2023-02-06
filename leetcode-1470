@@ -1,11 +1,9 @@
 var shuffle = function(nums, n) {
     let mid = n
     for(let i = 1; i<n*2;i+=2){
-        nums.splice(i, 0, nums[mid++])
+        nums.splice(i, 0, nums[mid])
+        mid++
         nums.splice(mid,1)
-        
-        
-        
     }
 
     return nums
