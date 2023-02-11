@@ -1,0 +1,30 @@
+const findOrder = (numCourses, prerequisites) => {
+	const adjacency = Array.from({ length: numCourses }, () => []);
+	const indegree = Array.from({ length: numCourses }, () => 0);
+
+	for (const [course, precourse] of prerequisites) {
+		adjacency[precourse].push(course);
+		indegree[course]++;
+	}
+
+	const queue = [];
+	for (let i = 0; i < indegree.length; i++) {
+		if (indegree[i] === 0) queue.push(i);
+	}
+
+	const output = [];
+
+	while (queue.length) {
+		const node = queue.shift();
+		output.push(node);
+
+		for (const v of adjacency[node]) {
+			indegree[v]--;
+
+			if (indegree[v] === 0) queue.push(v);
+		}
+	}
+
+	if (output.length === numCourses) return output;
+	return [];
+};
