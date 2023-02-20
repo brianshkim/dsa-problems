@@ -1,0 +1,22 @@
+var increasingTriplet = function(nums) {
+   let i = Infinity
+   let j = Infinity
+   let k = 0
+   while(k<nums.length){
+
+       if(nums[k] < i+1){
+           i = nums[k]
+       }
+       else if(nums[k]<j+1){
+           j=nums[k]
+       }
+       else{
+           return true
+       }
+
+       k++
+
+    }
+
+    return false
+};
