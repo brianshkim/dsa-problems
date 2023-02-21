@@ -1,0 +1,26 @@
+var isNStraightHand = function(hand, groupSize) {
+    if(hand.length%groupSize !== 0) return false
+    hand.sort((a,b)=>{
+        return a-b
+    })
+    let count = {}
+    for (let n of hand) {
+      count[n] = (count[n] || 0) + 1;
+      }
+
+    for(let i = 0;i<hand.length;i++){
+        if(count[hand[i]]===0) continue
+        let current = 0;
+        while(current < groupSize){
+            if(!count[hand[i]+current]) return false
+            count[hand[i]+current]--
+            current++
+        }
+    }
+  
+
+    return true
+    
+};
+
+//two Sum problem
