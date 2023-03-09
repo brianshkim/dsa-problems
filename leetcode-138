@@ -1,0 +1,31 @@
+var copyRandomList = function(head) {
+    if(!head) return null
+
+    let current = head
+    while(current){
+        let node = new Node(current.val)
+        node.next = current.next
+        current.next = node
+        current = node.next
+
+    }
+    current=head
+    while(current){
+        current.next.random = current.random?.next || null
+        current = current.next.next
+    }
+
+    let [prev, curr,next] = [head,head.next,head.next]
+
+    while(prev){
+        prev.next = prev.next.next
+        curr.next = curr?.next?.next || null
+        prev = prev.next
+        curr=curr.next
+    }
+
+    return next
+
+
+
+};
