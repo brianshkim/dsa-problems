@@ -1,0 +1,50 @@
+var splitListToParts = function(head, k) {
+   
+
+   const res = new Array(k).fill(null); // will contain split linked list 
+    let n = 0; // total # of nodes in the link list
+    
+    let curr = head;
+    
+    // count the # of nodes
+    while (curr != null) {
+        n++;
+        curr = curr.next;
+    }
+    
+    const width = Math.floor(n / k); // initial width of each linked list parts
+    let r = n % k; // remaining nodes
+    
+    let current = head;
+    let tail = head;
+    
+    for (let i = 0; current != null; i++) {
+        let m = width;
+        
+        if (r > 0) {
+            m += 1;
+            r--;
+        }
+        
+        let tail = current;
+        
+        for (let j = 1; j < m; j++) {
+            tail = tail.next;
+        }
+        
+        const next = tail.next;
+        tail.next = null;
+        res[i] = current;
+        current = next;
+    }
+    
+    return res;
+
+  
+
+   
+
+
+    
+
+};
