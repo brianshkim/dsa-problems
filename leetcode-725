@@ -1,8 +1,8 @@
 var splitListToParts = function(head, k) {
    
 
-   const res = new Array(k).fill(null); // will contain split linked list 
-    let n = 0; // total # of nodes in the link list
+   const res = new Array(k).fill(null); 
+    let n = 0; 
     
     let curr = head;
     
@@ -12,7 +12,7 @@ var splitListToParts = function(head, k) {
         curr = curr.next;
     }
     
-    const width = Math.floor(n / k); // initial width of each linked list parts
+    const width = Math.floor(n / k); 
     let r = n % k; // remaining nodes
     
     let current = head;
