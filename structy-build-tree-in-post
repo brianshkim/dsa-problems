@@ -1,0 +1,13 @@
+const buildTreeInPost = (inOrder, postOrder) => {
+  if (inOrder.length === 0) return null;
+  let value = postOrder[postOrder.length - 1];
+  let root = new Node(value);
+  let mid = inOrder.indexOf(value)
+  let leftIn = inOrder.slice(0, mid)
+  let rightIn = inOrder.slice(mid+1)
+  let leftPost = postOrder.slice(0, leftIn.length)
+  let rightPost = postOrder.slice(leftIn.length, -1)
+  root.left = buildTreeInPost(leftIn, leftPost)
+  root.right = buildTreeInPost(rightIn, rightPost);
+  return root
+};
