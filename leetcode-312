@@ -1,0 +1,24 @@
+var maxCoins = function(nums) {
+    nums = [1, ...nums, 1]
+
+    return dfs(nums, 1, nums.length-2)
+};
+
+
+function dfs(nums, l, r, memo={}){
+   
+    let key = l+','+r
+    if(key in memo) return memo[key]
+
+    if(l > r) return 0
+    
+    memo[key] = 0
+    for(let i = l;i<r+1;i++){
+        let coins = nums[l-1]*nums[i]*nums[r+1]
+        coins+=dfs(nums, l,i-1, memo) + dfs(nums, i+1, r, memo)
+       
+        memo[key] = Math.max(memo[key], coins)
+    }
+
+    return memo[key]
+}
