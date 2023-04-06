@@ -1,0 +1,19 @@
+var eraseOverlapIntervals = function(intervals) {
+    intervals.sort((a,b)=>
+    a[1]-b[1])
+  
+    let queue = [intervals[0]]
+    let count = 0
+    for(let i = 1;i<intervals.length;i++){
+        let [prevStart, prevEnd] = queue[queue.length-1]
+
+        let [currStart, currEnd] = intervals[i]
+        
+        if(prevEnd > currStart ) count++
+        else{
+        queue.push(intervals[i])
+        }
+    }
+
+    return count
+};
