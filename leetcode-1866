@@ -1,0 +1,10 @@
+var rearrangeSticks = function(n, k, memo={}}) {
+    let key = n+","+k
+    if(key in memo) return memo[key]
+    let mod = 10**9+7
+    if (n==k) return 1
+    if(k==0) return 0
+
+    return memo[key]=(rearrangeSticks(n-1, k-1, memo) + rearrangeSticks(n-1,k,memo)*(n-1)) % mod
+
+};
