@@ -1,0 +1,53 @@
+var minWindow = function(s, t) {
+    let frequency = createFreq(t)
+
+    let left = 0
+    let right = 0
+    let counter = 0
+    let minindex = s.length+1
+    let minlength = s.length+1
+    while(right < s.length){
+
+        if(frequency[s[right]]>=1){
+         
+            counter++
+        }
+        frequency[s[right]]--
+        right++
+
+        while(counter === t.length){
+            if(right-left<minlength){
+                minlength = right-left
+                minindex = left
+            }
+
+            if(frequency[s[left]] >= 0){
+                
+                counter--
+            }
+            frequency[s[left]]++ 
+            left++
+        }
+
+        
+    }
+
+   
+   
+   return s.slice(minindex, minlength+minindex)
+
+    
+};
+
+function createFreq(str){
+
+    let frequency = {}
+
+    for(char of str){
+        if(frequency[char])frequency[char]++
+        else{
+            frequency[char] = 1
+        } 
+    }
+    return frequency
+}
