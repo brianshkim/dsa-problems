@@ -1,0 +1,33 @@
+var diffWaysToCompute = function(expression) {
+    let ans=[];
+        if (!(expression.includes('+')) && !(expression.includes('-')) && !(expression.includes('*'))) {
+        ans.push(expression);
+        return ans;
+    }
+
+    for(let i = 0;i<expression.length;i++){
+        let curr = expression[i]
+
+        if(isNaN(parseInt(curr,10))){
+            let left = diffWaysToCompute(expression.slice(0,i))
+            let right = diffWaysToCompute(expression.slice(i+1))
+
+            for(let str of left){
+                for(let str2 of right){
+                    if(curr === "+"){
+                        ans.push(Number(str)+Number(str2))
+                    }
+                    else if(curr==="-"){
+                        ans.push(Number(str)-Number(str2))
+                    }
+                    else if(curr==="*"){
+                        ans.push(Number(str)*Number(str2))
+                    }
+                }
+
+            }
+        }
+    }
+
+    return ans
+};
