@@ -1,0 +1,38 @@
+var ladderLength = function(beginWord, endWord, wordList) {
+    if(!wordList.includes(endWord)) return 0
+    let alpha = "abcdefghijklmnopqrstuvwxyz"
+    let queue = [beginWord]
+    let count = 1
+    let wordListSet = new Set(wordList)
+    let seen = new Set(queue)
+
+    while(queue.length){
+        let next = []
+        for(let word of queue){
+            
+            if (word===endWord){
+                return count
+            }
+
+            let wordArr = word.split('')
+            for(let i = 0;i<wordArr.length;i++){
+                for(let j = 0;j<alpha.length;j++){
+                    wordArr[i]=alpha[j]
+                    let newWord = wordArr.join('')
+                    
+                    if(!seen.has(newWord) && wordListSet.has(newWord)){
+                        next.push(newWord)
+                        seen.add(newWord)
+                    }
+                    wordArr[i]=word[i]
+                }
+            }
+        }
+       
+            queue=next
+            count++
+    }
+
+        return 0
+    
+};
