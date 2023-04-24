@@ -1,0 +1,18 @@
+var insertionSortList = function(head) {
+    let newList = new ListNode()
+    let curr = head
+    while(curr !== null){
+        let prev = newList
+        while(prev.next!=null && prev.next.val <= curr.val){
+            prev=prev.next
+        }
+        let next = curr.next
+        curr.next = prev.next
+        prev.next = curr
+
+
+        curr=next
+    }
+
+    return newList.next
+};
