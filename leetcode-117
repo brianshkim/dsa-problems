@@ -1,0 +1,32 @@
+var connect = function(root) {
+    if(!root) return null
+    let queue = [root]
+
+    while(queue.length > 0){
+        
+        let length = queue.length
+        
+        for(let i = 0;i<length;i++){
+          
+            
+            if(i==length-1){
+                queue[0].next = null
+            }
+            else{
+                queue[0].next = queue[1]
+            }
+
+            let current = queue.shift()
+
+            if(current.left) queue.push(current.left)
+            if(current.right ) queue.push(current.right)
+
+
+        }
+
+        
+    }
+    return root
+    
+ 
+};
