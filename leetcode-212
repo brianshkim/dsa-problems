@@ -1,0 +1,43 @@
+var findWords = function(board, words) {
+    let arr=[]
+    let wordscopy = words
+    let visited = new Set()
+    let wordslist = new Set()
+    for(let i = 0;i<board.length;i++){
+        for(let j = 0;j<board[i].length;j++){
+            traversePath(board, wordscopy, arr, i, j, "", visited, wordslist)
+        }
+        
+    }
+    
+    return arr
+};
+
+
+const traversePath = (board, wordscopy, arr, row, col, str, visited, wordslist) => {
+    
+    if(row < 0 || row > board.length-1 || col < 0 || col > board[0].length-1 ) return
+    if(visited.has(row+","+col)) return
+    
+    
+    visited.add(row+","+col)
+    
+    str+=board[row][col]
+    if(wordslist.has(str)) return
+    if(wordscopy.includes(str)){
+        
+        wordscopy.splice(wordscopy.indexOf(str),1)
+        arr.push(str.slice())
+        visited.delete(row+','+col)
+        
+    }
+    
+    
+    traversePath(board, wordscopy, arr, row+1, col, str, visited, wordslist)
+    traversePath(board, wordscopy, arr, row-1, col, str, visited, wordslist)
+    traversePath(board, wordscopy, arr, row, col+1, str, visited, wordslist)
+    traversePath(board, wordscopy, arr, row, col-1, str, visited, wordslist)
+    
+    visited.delete(row+','+col)
+    
+}
