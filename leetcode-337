@@ -1,0 +1,16 @@
+var rob = function(root) {
+    const result = helper(root)
+    console.log(result)
+    return 
+};
+
+function helper(root) {
+    if(!root) return [0, 0]
+    const [lr, ln] = helper(root.left)
+    const [rr, rn] = helper(root.right)
+
+    
+
+    return [root.val +ln + rn, Math.max(lr+rr, ln+rn, lr+rn, ln+rr)]
+
+}
