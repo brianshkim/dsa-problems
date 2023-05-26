@@ -1,0 +1,29 @@
+var splitArray = function(nums, k) {
+    let left=Math.max(...nums)
+    let right = nums.reduce((a,b)=>a+b, 0)
+   console.log(left, right)
+    while (left < right){
+        mid = left + Math.floor((right - left) / 2)
+        if (feasible(nums, mid, k)) right = mid     
+        else{
+            left = mid + 1
+        }
+    }
+    return left
+    
+};
+
+const feasible = (nums, threshold, m) => {
+    let count = 1
+    let total = 0
+    for(let num in nums){
+        total += num
+    
+        if (total > threshold){
+            total = num
+            count += 1
+            if (count > m)return false
+        }
+    }
+    return true
+}
