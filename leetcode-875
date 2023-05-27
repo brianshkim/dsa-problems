@@ -1,0 +1,28 @@
+const canEatAll = (piles, speed, h) => {
+    let totalTime = 0;
+    for (const bananas of piles) {
+        totalTime += Math.ceil(bananas / speed);
+        if (totalTime > h) {
+            return false;
+        }
+    }
+    return true;
+};
+
+/**
+ * @param {number[]} piles
+ * @param {number} h
+ * @return {number}
+ */
+var minEatingSpeed = function (piles, h) {
+    let left = 1, right = Math.max(...piles);
+    while (left <= right) {
+        const mid = Math.floor(left + (right - left) / 2);
+        if (canEatAll(piles, mid, h)) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return left;
+};
