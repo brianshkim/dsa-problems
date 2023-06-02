@@ -1,0 +1,20 @@
+var maxLevelSum = function(root, level=0, arr=[]) {
+    if(!root) return
+
+    if(!arr[level]){
+        arr[level]=root.val
+    }
+    else{
+        arr[level]+=root.val
+    }
+
+    maxLevelSum(root.left, level+1,arr)
+    maxLevelSum(root.right, level+1,arr)
+
+    let max = Math.max(...arr)
+   
+
+    return arr.indexOf(max)+1
+
+
+};
