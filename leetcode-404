@@ -1,0 +1,19 @@
+var sumOfLeftLeaves = function(root, isLeft=false) {
+
+    if(!root)return 0
+    if(!root.left && root.right===null) {
+        if (isLeft) {
+            return root.val
+        }
+        else{
+            return 0
+        }
+    }
+    
+    
+    
+    let sum = sumOfLeftLeaves(root.left, true) + sumOfLeftLeaves(root.right, false)
+
+    return sum
+    
+};
