@@ -1,0 +1,18 @@
+var nthSuperUglyNumber = function(n, primes) {
+    let indices = new Array(primes.length).fill(0)
+    let currents = []
+    let out = [1]
+    
+    let min = 1;
+    while(!out[n-1]){
+        for(let i = 0;i<primes.length;i++) {
+            currents[i]=out[indices[i]]*primes[i]
+        }
+        let next = Math.min(...currents)
+        out.push(next)
+        for(let i = 0;i<primes.length;i++){
+            if(next===out[indices[i]]*primes[i]) indices[i]++
+        }
+    }
+    return out[n-1]
+};
