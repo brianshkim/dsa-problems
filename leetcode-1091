@@ -1,0 +1,24 @@
+var shortestPathBinaryMatrix = function(grid) {
+    let min = Infinity
+    let deltas = [[0,1],[1,1],[-1,1],[-1,-1],[-1,0],[1,-1],[0,-1],[1,0]]
+
+    if(grid[0][0]===1)return -1
+    let queue = [[0,0,1]]
+    while(queue.length){
+        let [row,col,path] = queue.shift()
+        if(row===grid.length-1&&col===grid.length-1) return path
+
+        
+
+        for(let delta of deltas){
+            let [x,y] = delta
+            if(row+x > grid.length-1 || col+y > grid.length-1 || row+x<0 || col+y<0) continue
+            if(grid[row+x][col+y] !== 0) continue
+
+            queue.push([row+x,col+y,path+1])
+            grid[row+x][col+y] = 1
+
+        }
+    }
+    return -1
+};
