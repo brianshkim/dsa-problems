@@ -1,0 +1,20 @@
+var nextLargerNodes = function(head) {
+    const arr = [];
+    let cur = head;
+    while(cur) {
+        let nextValue = findNextValue(cur, cur.val);
+        arr.push(nextValue);
+        cur = cur.next;
+    }
+    return arr;
+};
+const findNextValue = (head, value) => {
+    let cur = head;
+    while(cur) {
+        if(cur.val > value) {
+            return cur.val;
+        }
+        cur = cur.next;
+    }
+    return 0;
+}
