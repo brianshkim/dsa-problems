@@ -1,0 +1,19 @@
+var wordBreak = function(s, wordDict, str=[], ans=[]) {
+ 
+    if(s.length===0){
+        ans.push(str.join(" "))
+    }
+
+    for(let i = 0;i < wordDict.length;i++){
+        if(s.startsWith(wordDict[i])){
+            str.push(wordDict[i])
+            wordBreak(s.slice(wordDict[i].length), wordDict, str, ans)
+            str.pop()
+        }
+        else{
+            continue
+        }
+
+    }
+    return ans
+};
