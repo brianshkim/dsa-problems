@@ -1,0 +1,24 @@
+var countBeautifulPairs = function(nums) {
+    const len = nums.length;
+    let count = 0
+    for(let i=0; i < len; i++){
+      for (let j = i + 1; j < nums.length; j++) {
+        const firstDigit = Number(nums[i].toString().charAt(0));
+        const lastDigit = nums[j] % 10;
+        if(gcd(+firstDigit, +lastDigit) === 1)  count++
+      }
+    }
+    return count++;
+    
+};
+
+function gcd(a, b) {
+  a = Math.abs(a);
+  b = Math.abs(b);
+
+  if (b === 0) {
+    return a;
+  }
+
+  return gcd(b, a % b);
+}
