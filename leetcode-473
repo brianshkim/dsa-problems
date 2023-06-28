@@ -1,0 +1,30 @@
+var makesquare = function(matchsticks) {
+    let sum = matchsticks.reduce((prev, cur) => prev + cur);
+    let avg = sum / 4;
+    if(sum % 4 !== 0 || matchsticks.length < 4) return false
+    matchsticks.sort((a, b) => b - a);
+    return traverse(matchsticks, avg)
+    
+
+    
+};
+
+ function traverse(matchsticks,avg, i = 0, arr = new Array(4).fill(0)) {
+        if(matchsticks.length === i) {
+            let first = arr[0];
+            for(let k = 1; k < 4; k++) {
+                if(arr[k] !== first) return false;
+            }
+            return true;
+        }
+
+        for(let j = 0; j < 4; j++) {
+            if(arr[j] + matchsticks[i] > avg) continue;
+            
+            arr[j] += matchsticks[i];
+            if(traverse(matchsticks, avg,i + 1, arr)) return true;
+            arr[j] -= matchsticks[i];
+        }
+
+        return false;
+    }
