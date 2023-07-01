@@ -1,0 +1,9 @@
+var maximumGap = function(nums) {
+    nums.sort((a,b)=>a-b)
+    let tempMax=nums[1]-nums[0]
+    let maxDiff=0
+    for(let i=0;i<nums.length;i++){
+        if(maxDiff<nums[i+1]-nums[i])  maxDiff=nums[i+1]-nums[i]
+    }
+    return maxDiff
+};
