@@ -1,0 +1,11 @@
+var shortestPalindrome = function(s) {
+    const reversed = s.split('').reverse().join("")
+    for(let i = 0;i<=s.length;i++){
+        if(s.startsWith(reversed.slice(i,s.length))){
+            return reversed.slice(0,i)+s
+        }
+    }
+
+
+
+};
