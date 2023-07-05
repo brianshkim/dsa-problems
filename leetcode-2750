@@ -1,0 +1,16 @@
+var numberOfGoodSubarraySplits = function(nums) {
+    if(!nums.includes(1)) return 0
+
+    let ans = 1
+    let prev=null
+    let mod = 10**9 + 7
+    
+    for(let i = 0;i<nums.length;i++){
+        if(nums[i]===0) continue
+        if(prev!==null){
+            ans = (ans*(i-prev)) % mod
+        }
+        prev = i
+    }
+    return ans
+};
