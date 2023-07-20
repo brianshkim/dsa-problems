@@ -12,11 +12,11 @@ var maxPoints = function(points) {
             
             const [x2, y2] = [...points[j]];
             
-            if ( x1 === x2 ) slope = Number.MAX_VALUE; // if the denominator is 0, then the slope will become infinity
+            if ( x1 === x2 ) slope = Number.MAX_VALUE; 
             else slope = (y2 - y1) / (x2 - x1);
             
-            if ( !mp.has(slope) ) mp.set(slope, 2); // 2 coz we have got the new slope using 2 points.
-            else mp.set(slope, mp.get(slope) + 1); // if slope already exits then just increment the number of frequencies
+            if ( !mp.has(slope) ) mp.set(slope, 2); 
+            else mp.set(slope, mp.get(slope) + 1); 
             
             currMax = Math.max(currMax, mp.get(slope));
 
