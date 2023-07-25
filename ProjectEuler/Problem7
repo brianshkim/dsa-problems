@@ -1,0 +1,32 @@
+function main() {
+    var t = parseInt(readLine());
+    let limit = 10**7
+    let primes = []
+    let p = 2
+    for(let i = 0;i<limit+1;i++){
+        primes.push(true)
+    }
+    while (p*p<=limit){
+        if(primes[p]){
+            for(let i = p*2;i<limit+1;i+=p ){
+                primes[i]=false
+            }
+        }
+        p+=1
+    }
+    primenumbers = []
+    for(let p=2;p<limit;p++){
+        if(primes[p]){
+            primenumbers.push(p)
+        }
+    }
+    for(var a0 = 0; a0 < t; a0++){
+        var n = parseInt(readLine());
+        console.log(primenumbers[n-1])
+        
+    }
+    
+   
+    
+
+}
