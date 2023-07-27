@@ -1,0 +1,23 @@
+var partition = function(head, x) {
+    let front = new ListNode(0)
+    let back = new ListNode(0)
+    let fcurr = front
+    let bcurr = back
+    let curr=head
+
+    while(curr){
+        if(curr.val < x) {
+            fcurr.next = curr
+            fcurr=curr
+        }
+        else{
+            bcurr.next = curr
+            bcurr = curr
+        }
+        curr = curr.next
+    }
+    fcurr.next = back.next
+    bcurr.next=null
+    return front.next
+
+};
