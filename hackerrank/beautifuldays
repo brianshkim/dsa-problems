@@ -1,0 +1,11 @@
+function beautifulDays(i, j, k) {
+    // Write your code here
+    let count = 0
+    for(let start = i;start<=j;start++){
+        let reverse = Number(start.toString().split('').reverse().join(''))
+        if(Math.abs(start-reverse)%k===0) count++
+    }
+    
+    return count
+
+}
