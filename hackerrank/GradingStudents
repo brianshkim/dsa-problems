@@ -1,0 +1,24 @@
+function gradingStudents(grades) {
+    // Write your code here
+    let ans = []
+    for(let i= 0;i<grades.length;i++){
+        if(grades[i]<38){
+            ans.push(grades[i])
+            continue
+        }
+        let n5 = Math.floor(grades[i]/10)*10+5
+        let n10=n5+5
+        if(n10-grades[i]<=2 && grades[i]>5){
+            ans.push(n10)
+        }
+        else if(n5-grades[i]<=2 && n5-grades[i]>0){
+            ans.push(n5)
+        }
+        else{
+            ans.push(grades[i])
+        }
+        
+    }
+    return ans
+
+}
