@@ -1,0 +1,16 @@
+var zigzagLevelOrder = function(root, ans=[],level=0) {
+    
+    if(!root) return ans
+    if(!ans[level]) ans[level]=[]
+    if(level%2===1){
+        ans[level].unshift(root.val)
+    }
+    else{
+        ans[level].push(root.val)
+    }
+    zigzagLevelOrder(root.left, ans, level+1)
+    zigzagLevelOrder(root.right, ans, level+1)
+
+    return ans
+
+};
