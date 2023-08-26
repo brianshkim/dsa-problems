@@ -1,0 +1,18 @@
+var distinctSubseqII = function(s, sI=0, tI=0, hash={}) {
+    let result = 0
+    const mod = 10 ** 9 + 7
+    const dp = new Array(s.length + 1).fill(0)
+    dp[0]=1
+    const last = new Array(26).fill(-1)
+    for (let i = 0; i < s.length; i++) {
+        const x = s.charCodeAt(i) - 97
+        dp[i + 1] = (dp[i] * 2) % mod
+        if (last[x] >= 0) {
+            dp[i + 1] -= dp[last[x]]
+        }
+        dp[i + 1] %= mod
+        last[x] = i
+    }
+    result = (dp[s.length] - 1 + mod) % mod
+    return result
+}
