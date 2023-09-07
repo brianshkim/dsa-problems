@@ -1,0 +1,28 @@
+var findSubstring = function(s, words) {
+    let answers = [];
+    let total = words.reduce((count,word)=>count+=word.length,0)
+
+    for(let i = 0;i<=s.length-total;i++){
+        if(containsAllStrings(s.slice(i), words.slice())){
+            answers.push(i)
+        }
+    } 
+    return answers  
+  
+    
+};
+
+let containsAllStrings = function(string, words){
+    if(!words.length)return true
+    for(let i = 0;i<words.length;i++){
+        let length = words[i].length
+        
+        if(string.slice(0, length)===words[i]){
+            words.splice(i,1)
+
+            return containsAllStrings(string.slice(length), words)
+        }
+        
+        }
+    return false
+}
