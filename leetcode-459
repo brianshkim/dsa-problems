@@ -1,0 +1,11 @@
+var repeatedSubstringPattern = function(s, i=1) {
+
+    
+    for(let j = 0;i<=Math.floor(s.length/2);i++){
+       if(s.length%i===0 && s.slice(0,i).repeat(s.length/i)===s){
+           return true
+       }
+    }
+    return false
+    
+};
