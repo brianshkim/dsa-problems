@@ -1,0 +1,12 @@
+var findTheDifference = function(s, t) {
+    let obj = {}
+    for(let letter of s){
+        obj[letter]=obj[letter]+1 || 1
+    }
+
+    for(let letter of t){
+        if(!obj[letter]) return letter
+        obj[letter]--;
+    }
+    
+};
