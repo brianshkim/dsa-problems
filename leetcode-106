@@ -1,0 +1,13 @@
+    if (inorder.length == 0 || postorder.length == 0) {
+        return null;
+    }
+    var rootVal = postorder[postorder.length - 1];
+    var root = new TreeNode(rootVal);
+    var rootIndex = inorder.indexOf(rootVal);
+    var leftInorder = inorder.slice(0, rootIndex);
+    var rightInorder = inorder.slice(rootIndex + 1);
+    var leftPostorder = postorder.slice(0, leftInorder.length);
+    var rightPostorder = postorder.slice(leftInorder.length, postorder.length - 1);
+    root.left = buildTree(leftInorder, leftPostorder);
+    root.right = buildTree(rightInorder, rightPostorder);
+    return root;
