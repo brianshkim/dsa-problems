@@ -1,0 +1,15 @@
+var wiggleSort = function(nums) {
+        let copyNums = nums.slice(0,nums.length);
+    copyNums.sort((a,b)=>a-b);
+    let id = copyNums.length-1;
+
+    for(let i=1; i<copyNums.length; i+=2){
+        nums[i] = copyNums[id];
+        id--;
+    }
+        // id++;
+    for(let i=0; i<copyNums.length; i+=2){
+        nums[i] = copyNums[id];
+        id--;
+    }
+};
