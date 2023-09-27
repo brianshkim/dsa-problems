@@ -1,13 +1,16 @@
+var buildTree = function(inorder, postorder) {
     if (inorder.length == 0 || postorder.length == 0) {
         return null;
     }
-    var rootVal = postorder[postorder.length - 1];
-    var root = new TreeNode(rootVal);
-    var rootIndex = inorder.indexOf(rootVal);
-    var leftInorder = inorder.slice(0, rootIndex);
-    var rightInorder = inorder.slice(rootIndex + 1);
-    var leftPostorder = postorder.slice(0, leftInorder.length);
-    var rightPostorder = postorder.slice(leftInorder.length, postorder.length - 1);
-    root.left = buildTree(leftInorder, leftPostorder);
-    root.right = buildTree(rightInorder, rightPostorder);
-    return root;
+    let rootVal = postorder[postorder.length-1]
+    let root = new TreeNode(rootVal)
+    let rootIndex = inorder.indexOf(rootVal)
+    let leftInorder = inorder.slice(0,rootIndex)
+    let rightInorder  = inorder.slice(rootIndex+1)
+    let leftPostorder = postorder.slice(0,leftInorder.length)
+    let rightPostorder = postorder.slice(leftInorder.length, postorder.length-1)
+    root.left = buildTree(leftInorder, leftPostorder)
+    root.right = buildTree(rightInorder, rightPostorder)
+    return root
+
+        };
