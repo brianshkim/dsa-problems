@@ -1,0 +1,19 @@
+var minSizeSubarray = function(nums, target) {
+    let min = Infinity
+    let left=0
+    let right = 0
+    let sum=0
+    let n =nums.length
+
+    while(left<nums.length){
+        sum+=nums[right%n]
+        while(left<n && sum>target){
+            sum-=nums[left]
+            left++
+        }
+            if(sum==target) min=Math.min(min, right-left+1)
+            right++
+    }
+    
+    return min===Infinity?-1:min
+};
