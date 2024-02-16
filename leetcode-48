@@ -1,20 +1,16 @@
-var permuteUnique = function(nums, arr=[], result=[],seen=new Set(), duplicate=new Set()) {
-    
-    if(arr.length === nums.length){
-        result.push(arr.slice())
-    } 
-
-
-    for(let i = 0;i<nums.length;i++){
-        if(seen.has(i) || duplicate.has(nums[i])) continue
-        arr.push(nums[i])
-        seen.add(i)
-        duplicate.add(nums[i])
-        permuteUnique(nums, arr, result, seen)
-        arr.pop()
-        seen.delete(i)
+var rotate = function(matrix) {
+    let n = matrix.length
+    for (let i=0;i<Math.ceil(n/2);i++){
+        for(let j = 0;j<Math.floor(n/2);j++){
+            let tmp = matrix[n - 1 - j][i]
+            
+                matrix[n - 1 - j][i] = matrix[n - 1 - i][n - j - 1]
+                matrix[n - 1 - i][n - j - 1] = matrix[j][n - 1 -i]
+                matrix[j][n - 1 - i] = matrix[i][j]
+                matrix[i][j] = tmp
+            
+        }
+        
         
     }
-
-    return result
 };
