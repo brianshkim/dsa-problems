@@ -1,0 +1,50 @@
+def dijkstra(graph, src, dest):
+    unvisited = set()
+    predecessors = {}
+    distances = {}
+    for node in graph:
+        unvisited.add(node)
+        if(node) == src:
+            distances[node] = 0
+        else:
+            distances[node] = float("inf")
+
+    while len(unvisited) > 0:
+        min_dist_node = get_min_dist_node(distances,unvisited)
+        unvisited.remove(min_dist_node)
+
+        if min_dist_node == dest:
+            return get_path(dest,predecessors)
+
+        for neighbor in graph[min_dist_node]:
+            if neighbor not in unvisited:
+                continue
+            distance_so_far = distances[min_dist_node]
+            distance_to_neighbor = graph[min_dist_node][neighbor]
+            total_distance_to_neighbor = distance_so_far + distance_to_neighbor
+            if total_distance_to_neighbor < distances.get(neighbor):
+                distances[neighbor] = total_distance_to_neighbor
+                predecessors[neighbor] = min_dist_node
+
+# don't touch below this line
+
+
+def get_path(dest, predecessors):
+    path = []
+    pred = dest
+    while pred is not None:
+        path.append(pred)
+        pred = predecessors.get(pred, None)
+    path.reverse()
+    return path
+
+
+def get_min_dist_node(distances, unvisited):
+    min_dist = float("inf")
+    min_dist_node = None
+    for v in unvisited:
+        distance_so_far = distances[v]
+        if distance_so_far < min_dist:
+            min_dist = distance_so_far
+            min_dist_node = v
+    return min_dist_node
